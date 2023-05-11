@@ -1,6 +1,14 @@
 #include<iostream>
 using namespace std;
 
+void printing(int data[]){
+    for (int k = 0; k < 10; k++) { 
+		    cout << data[k] << " ";
+	    }
+        cout << endl;
+        cout << "-----------------------------------------------" << endl;
+}
+
 void quickSort(int data[], int left, int right) {
     if (left >= right) {
         return;
@@ -19,15 +27,11 @@ void quickSort(int data[], int left, int right) {
         if (i < j){
             swap(data[i], data[j]);
         }
-        for (int k = 0; k < 10; k++) { // debug
-		    cout << data[k] << " ";
-	    }
-        cout << endl;
-        cout << "-----------------------------------------------" << endl;
+        printing(data);
     }
     data[left] = data[i];
     data[i] = pivot;
-    cout << "end of round" << endl;
+    printing(data);
     quickSort(data, left, i - 1); //呼叫自己處理左半邊
 	quickSort(data, i + 1, right); //呼叫自己處理右半邊
 }
