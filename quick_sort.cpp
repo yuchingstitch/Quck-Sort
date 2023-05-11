@@ -4,38 +4,38 @@ using namespace std;
 int divide(int data[], int start, int end) {
 	int pivot = data[start]; //設定基準點
 	int pivotIndex = start;
-    cout << "in dividing" << endl;
+
+    cout << "in dividing" << endl;  // debug
     while (start != end){
         while(pivot >= data[start]){
             start ++;
-            cout << "start = " << start << endl;
+            cout << "start = " << start << endl; // debug
             if(start == end){
-                cout << "returning 1";
-                swap(data[start], data[end]);
-                swap(data[pivotIndex],data[start]);
-                pivotIndex = start;
-                return pivotIndex;
+                cout << "return 1"; //debug
+                
             }
         }
         while(pivot < data[end]){
             end --;
             cout << "end = " << end << endl;
             if(start == end){
-                cout << "returning 2";
-                swap(data[start], data[end]);
-                swap(data[pivotIndex],data[start]);
-                pivotIndex = start;
-                return pivotIndex;
+                cout << "return 2"; //debug
+                
             }
-        
+        }
 
-        for (int i = 0; i < 10; i++) {
+        swap(data[start], data[end]);
+
+        for (int i = 0; i < 10; i++) { // debug
 		    cout << data[i] << " ";
 	    }
         cout << endl;
         cout << "-----------------------------------------------" << endl;
-        }
+        
     }
+    swap(data[pivotIndex],data[start]);
+    pivotIndex = start;
+    return pivotIndex;
 }
 
 void quickSort(int data[], int start, int end) {
@@ -44,6 +44,7 @@ void quickSort(int data[], int start, int end) {
         return;
     }
 	int p = divide(data, start, end); //一輪後回傳切割點
+    cout << "returned to quickSort" << endl;
 	//quickSort(data, start, p - 1); //呼叫自己處理左半邊
 	//quickSort(data, p + 1, end); //呼叫自己處理右半邊
 }
